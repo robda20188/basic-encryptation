@@ -64,13 +64,38 @@ char* decrypt(char* code, int displacement){
 }
 
 int main() {
-    char* code = "daniel15"; 
+    int toEncrypt;
+    int input;
+    printf("Encrypt[1] or Decrypt[2]: ");
+    scanf("%d", &input);
+    if(input == 1){
+        toEncrypt = 1;
+    }
+    else if(input == 2){
+        toEncrypt = 0;
+    }else{
+        printf("Invalid input\n");
+        return 1;
+    }
+
+    char code[100];
+    printf("Code: ");
+    scanf("%s", code);
     
-    char* encrypted = encrypt(code, 10);
-    printf("%s\n", encrypted);
+    int displacement;
+    printf("Displacement: ");
+    scanf("%d", &displacement);
+
+    if(displacement > length(symbols)){
+        printf("Invalid displacement\n");
+        return 1;
+    }
     
-    char* decrypted = decrypt(encrypted, 10);
-    printf("%s", decrypted);
+    if(toEncrypt){
+        printf("%s\n", encrypt(code, displacement));
+    }else{
+        printf("%s\n", decrypt(code, displacement));
+    }
     
     return 0;
 }
