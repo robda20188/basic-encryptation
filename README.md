@@ -1,5 +1,5 @@
 # Crypt
-An extremely basic terminal encryptation program made with C.
+An extremely basic terminal encryption program made with C.
 
 # How it works
 The program encrypts displacing an array of symbols. For example, if the displacement is 2, the array of symbols displaced will look like this:
