@@ -39,6 +39,10 @@ char* encrypt(char* code, int displacement){
         int symbols_index = 0;
         while(symbols[symbols_index] != code[i]){
             symbols_index++;
+            if(symbols_index > length(symbols) - 1){
+                printf("Invalid characters\n");
+                exit(1);
+            }
         }         
         encrypted[i] = displaced[symbols_index];
     }
@@ -56,6 +60,10 @@ char* decrypt(char* code, int displacement){
         int displaced_index = 0;
         while(displaced[displaced_index] != code[i]){
             displaced_index++;
+            if(displaced_index > length(displaced) - 1){
+                printf("Invalid characters\n");
+                exit(1);
+            }
         }
         decrypted[i] = symbols[displaced_index];
     }
@@ -81,14 +89,15 @@ int main() {
     char code[100];
     printf("Code: ");
     scanf("%s", code);
-    
+
     int displacement;
     printf("Displacement: ");
     scanf("%d", &displacement);
 
-    if(displacement > length(symbols)){
-        printf("Invalid displacement\n");
-        return 1;
+    if(displacement > length(symbols) - 1){
+        displacement = displacement % (length(symbols) - 1);
+    }else if(displacement < 0){
+        displacement = length(symbols) + displacement;
     }
     
     if(toEncrypt){
