@@ -14,7 +14,7 @@ So this program uses a private key encryptation method because the person who en
 # How to run
 First, you clone the repository
 ```sh
-git clone https://github.com/robda20188/basic-encryptation
+git clone https://github.com/robda20188/basic-encryption
 ```
 
 You create the binary file
